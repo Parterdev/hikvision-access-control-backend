@@ -101,6 +101,19 @@ Expone el sistema hacia el exterior mediante una API REST. Incluye los controlad
 Esta capa se encarga exclusivamente de la gestión HTTP (request/response) y la validación básica de las solicitudes.  
 Su objetivo es mantener los endpoints limpios, sin lógica de negocio, delegando el procesamiento a la capa de aplicación.
 
+## 🌿 Estrategia de Ramas (Branching Strategy)
+
+Utilizamos una adaptación de **GitFlow** estricta. Ningún desarrollador puede subir código directamente a `develop` o `main`.
+
+**Formato de Naming:** `tipo/UISRAEL-{descripcion}`
+
+| Tipo | Descripción | Ejemplo |
+| :--- | :--- | :--- |
+| **`feature/`** | Desarrollo de Historias de Usuario (HU) | `feature/UISRAEL-0001-escanear-datos` |
+| **`bugfix/`** | Corrección de bugs en etapa de desarrollo | `bugfix/UISRAEL-0002-error-api-timeout` |
+| **`hotfix/`** | Parches críticos a producción | `hotfix/UISRAEL-0003-fix-login-prod` |
+| **`chore/`** | Tareas técnicas / Mantenimiento | `chore/UISRAEL-0004-update-husky` |
+
 ## 🚀 Estado del Proyecto
 Fase inicial:
 - Estructura del proyecto
