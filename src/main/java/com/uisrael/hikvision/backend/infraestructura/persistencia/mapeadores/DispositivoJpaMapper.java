@@ -1,7 +1,7 @@
 package com.uisrael.hikvision.backend.infraestructura.persistencia.mapeadores;
 
 import com.uisrael.hikvision.backend.dominio.entidades.Dispositivo;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.DispositivoJpaEntity;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.DispositivoJpaEntity;
 
 public class DispositivoJpaMapper {
 	public DispositivoJpaEntity aJpa(Dispositivo dominio) {

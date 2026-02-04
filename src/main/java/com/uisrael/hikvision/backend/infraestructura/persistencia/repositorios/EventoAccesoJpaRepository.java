@@ -1,7 +1,8 @@
-package com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.repositorios;
+package com.uisrael.hikvision.backend.infraestructura.persistencia.repositorios;
 
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.EventoAccesoJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.EventoAccesoJpaEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.uisrael.hikvision.backend.dominio.puertos.repositorio;
+package com.uisrael.hikvision.backend.dominio.repositorios;
 
 import com.uisrael.hikvision.backend.dominio.entidades.EventoAcceso;
 
@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface EventoAccesoRepositorioPort {
+public interface EventoAccesoRepositorio {
 	EventoAcceso guardar(EventoAcceso evento);
 
     Optional<EventoAcceso> buscarPorId(Long id);

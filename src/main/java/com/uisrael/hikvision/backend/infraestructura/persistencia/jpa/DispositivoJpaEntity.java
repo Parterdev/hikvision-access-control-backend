@@ -1,4 +1,4 @@
-package com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades;
+package com.uisrael.hikvision.backend.infraestructura.persistencia.jpa;
 
 import com.uisrael.hikvision.backend.dominio.enums.EstadoRegistro;
 import jakarta.persistence.*;

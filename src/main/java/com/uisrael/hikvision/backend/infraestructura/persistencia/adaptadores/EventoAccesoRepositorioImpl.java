@@ -1,11 +1,12 @@
 package com.uisrael.hikvision.backend.infraestructura.persistencia.adaptadores;
 
 import com.uisrael.hikvision.backend.dominio.entidades.EventoAcceso;
-import com.uisrael.hikvision.backend.dominio.puertos.repositorio.EventoAccesoRepositorioPort;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.repositorios.DispositivoJpaRepository;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.repositorios.EventoAccesoJpaRepository;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.repositorios.UsuarioJpaRepository;
+import com.uisrael.hikvision.backend.dominio.repositorios.EventoAccesoRepositorio;
 import com.uisrael.hikvision.backend.infraestructura.persistencia.mapeadores.EventoAccesoJpaMapper;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.repositorios.DispositivoJpaRepository;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.repositorios.EventoAccesoJpaRepository;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.repositorios.UsuarioJpaRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class EventoAccesoRepositorioAdapter implements EventoAccesoRepositorioPort {
+public class EventoAccesoRepositorioImpl implements EventoAccesoRepositorio {
 	private final EventoAccesoJpaRepository eventoJpaRepository;
     private final UsuarioJpaRepository usuarioJpaRepository;
     private final DispositivoJpaRepository dispositivoJpaRepository;

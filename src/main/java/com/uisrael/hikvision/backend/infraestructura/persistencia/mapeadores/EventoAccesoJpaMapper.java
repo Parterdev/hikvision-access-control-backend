@@ -1,9 +1,9 @@
 package com.uisrael.hikvision.backend.infraestructura.persistencia.mapeadores;
 
 import com.uisrael.hikvision.backend.dominio.entidades.EventoAcceso;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.DispositivoJpaEntity;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.EventoAccesoJpaEntity;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.UsuarioJpaEntity;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.DispositivoJpaEntity;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.EventoAccesoJpaEntity;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.UsuarioJpaEntity;
 
 public class EventoAccesoJpaMapper {
 	public EventoAccesoJpaEntity aJpa(EventoAcceso dominio, UsuarioJpaEntity usuarioJpa, DispositivoJpaEntity dispositivoJpa) {

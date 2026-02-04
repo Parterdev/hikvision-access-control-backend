@@ -1,9 +1,10 @@
 package com.uisrael.hikvision.backend.infraestructura.persistencia.adaptadores;
 
 import com.uisrael.hikvision.backend.dominio.entidades.Dispositivo;
-import com.uisrael.hikvision.backend.dominio.puertos.repositorio.DispositivoRepositorioPort;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.repositorios.DispositivoJpaRepository;
+import com.uisrael.hikvision.backend.dominio.repositorios.DispositivoRepositorio;
 import com.uisrael.hikvision.backend.infraestructura.persistencia.mapeadores.DispositivoJpaMapper;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.repositorios.DispositivoJpaRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class DispositivoRepositorioAdapter implements DispositivoRepositorioPort {
+public class DispositivoRepositorioImpl implements DispositivoRepositorio {
 	private final DispositivoJpaRepository dispositivoJpaRepository;
     private final DispositivoJpaMapper mapper = new DispositivoJpaMapper();
 

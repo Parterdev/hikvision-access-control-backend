@@ -1,32 +1,63 @@
 package com.uisrael.hikvision.backend.infraestructura.persistencia.mapeadores;
 
 import com.uisrael.hikvision.backend.dominio.entidades.Usuario;
-import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.entidades.UsuarioJpaEntity;
+import com.uisrael.hikvision.backend.dominio.entidades.ValidityWindow;
+import com.uisrael.hikvision.backend.infraestructura.persistencia.jpa.UsuarioJpaEntity;
 
 public class UsuarioJpaMapper {
-	public UsuarioJpaEntity aJpa(Usuario dominio) {
+
+    public UsuarioJpaEntity toEntity(Usuario dominio) {
         if (dominio == null) return null;
 
-        return UsuarioJpaEntity.builder()
-                .id(dominio.getId())
-                .identificacion(dominio.getIdentificacion())
-                .nombreCompleto(dominio.getNombreCompleto())
-                .tipoUsuario(dominio.getTipoUsuario())
-                .estado(dominio.getEstado())
-                .fechaRegistro(dominio.getFechaRegistro())
-                .build();
+        UsuarioJpaEntity entity = new UsuarioJpaEntity();
+        entity.setId(dominio.getId());
+
+        // ISAPI fields
+        entity.setEmployeeNo(dominio.getEmployeeNo());
+        entity.setName(dominio.getName());
+        entity.setUserType(dominio.getUserType());
+
+        entity.setLocalUIRight(dominio.getLocalUIRight());
+        entity.setNumOfCard(dominio.getNumOfCard());
+        entity.setNumOfFace(dominio.getNumOfFace());
+
+        // Valid window (guardamos plano)
+        if (dominio.getValid() != null) {
+            entity.setValidEnable(dominio.getValid().getEnable());
+            entity.setValidBeginTime(dominio.getValid().getBeginTime());
+            entity.setValidEndTime(dominio.getValid().getEndTime());
+            entity.setValidTimeType(dominio.getValid().getTimeType());
+        }
+
+        // RightPlan: por ahora NO lo persistimos (Sprint 1)
+        // Lo agregaremos cuando definamos tabla o JSON column.
+        return entity;
     }
 
-    public Usuario aDominio(UsuarioJpaEntity jpa) {
-        if (jpa == null) return null;
+    public Usuario toDomain(UsuarioJpaEntity entity) {
+        if (entity == null) return null;
+
+        ValidityWindow valid = ValidityWindow.builder()
+                .enable(entity.getValidEnable())
+                .beginTime(entity.getValidBeginTime())
+                .endTime(entity.getValidEndTime())
+                .timeType(entity.getValidTimeType())
+                .build();
 
         return Usuario.builder()
-                .id(jpa.getId())
-                .identificacion(jpa.getIdentificacion())
-                .nombreCompleto(jpa.getNombreCompleto())
-                .tipoUsuario(jpa.getTipoUsuario())
-                .estado(jpa.getEstado())
-                .fechaRegistro(jpa.getFechaRegistro())
+                .id(entity.getId())
+
+                // ISAPI fields
+                .employeeNo(entity.getEmployeeNo())
+                .name(entity.getName())
+                .userType(entity.getUserType())
+
+                .localUIRight(entity.getLocalUIRight())
+                .numOfCard(entity.getNumOfCard())
+                .numOfFace(entity.getNumOfFace())
+
+                .valid(valid)
+                .rightPlan(null) // luego lo persistimos bien
                 .build();
     }
 }
