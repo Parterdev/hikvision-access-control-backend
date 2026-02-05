@@ -13,19 +13,17 @@ public class HikvisionDeviceInfoService {
     private final HikvisionDigestClient client;
     private final XmlMapper xmlMapper;
 
+    public String obtenerDeviceInfoRaw(String baseUrl, String username, String password) {
+        return client.get(baseUrl, "/ISAPI/System/deviceInfo", username, password);
+    }
+
     public DeviceInfoXml obtenerDeviceInfo(String baseUrl, String username, String password) {
         try {
-            String xml = client.get(
-                    baseUrl,
-                    "/ISAPI/System/deviceInfo",
-                    username,
-                    password
-            );
-
+            String xml = obtenerDeviceInfoRaw(baseUrl, username, password);
             return xmlMapper.readValue(xml, DeviceInfoXml.class);
-
         } catch (Exception e) {
             throw new RuntimeException("Error parseando DeviceInfo desde Hikvision", e);
         }
     }
 }
+
